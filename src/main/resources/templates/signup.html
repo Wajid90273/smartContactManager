@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" href="images/shorcut.jpg">
+<title>Register Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Passion+One'>
+<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Oxygen'>
+</head>
+
+<body>
+
+	<section class="banner1 d-flex justify-content-center align-items-center">
+		<div class="container">
+
+			<div class="row main">
+
+				<div class="panel-heading">
+
+					<div class="panel-title text-center">
+						<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert"
+							role="alert">
+							<p th:text="${session.message.content}"></p>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+					</div>
+						<h1 class="title">RESGISTER</h1>
+
+					</div>
+				</div>
+				<div class="main-login main-center">
+					<form novalidate class="form-horizontal" method="post" action="" th:action="@{/do_register}"
+						th:object="${user}">
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Your Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon" style="margin-top: 4px;"><i class="fa fa-user fa-lg"
+											aria-hidden="true"></i></span><span style="margin: 4px;"></span>
+									<input type="text" class="form-control " name="name" th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}" id="name"
+										placeholder="Enter your Name" th:value="${user.name}" required />
+								</div>
+								<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}">
+								    
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Your Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon" style="margin-top: 4px;"><i class="fa fa-envelope fa"
+											aria-hidden="true"></i></span><span style="margin: 4px;"></span>
+									<input type="email" class="form-control" name="email" id="email"
+										placeholder="Enter your Email" th:value="${user.email}" required />
+								</div>
+								<div class="message" id="message_mail">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon" style="margin-top: 4px;"><i class="fa fa-unlock fa-lg"
+											aria-hidden="true"></i></span><span style="margin: 4px;"></span>
+									<input type="password" class="form-control" name="password" id="password"
+										placeholder="Enter your Password" th:value="${user.password}" required />
+								</div>
+								<div class="message" id="message_password">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="adderss" class="cols-sm-2 control-label">About</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon" style="margin-top: 4px;"><i class="fa fa-map-marker fa-lg"></i></span><span style="margin: 4px;"></span>
+									<textarea rows="10" type="address" class="form-control" name="about" id="address"
+										placeholder="Enter your Address" th:value="${user.about}" required></textarea>
+								</div>
+								<div class="message" id="message_address">
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" name="agreement" class="form-check-input" id="agreement" />
+							<label for="agreement">Accept terms and condition</label>
+
+						</div>
+
+
+						<div class="form-group ">
+							<button type="submit" class="btn bg-white btn-lg btn-block login-button"
+								onclick="check()">Register</button>
+							<button type="reset" class="btn bg-white btn-lg btn-block login-button">Reset</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/js.js"></script>
+</body>
+
+</html>

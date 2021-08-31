@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+
+	<title th:text="${title}">User Dashboard</title>
+</head>
+<body>
+
+<section class="banner d-flex justify-content-center align-items-center"> 
+	  <div class="container">
+	  <div class="text-center">
+	  
+	  <h1 class="font-weight-bold">Start Adding Contact on Clould</h1>
+	  <p>Smart contracts allow a safe transaction to be enforced between the two parties concerned.</p>
+	  <br><br>
+	  <a href="#" th:href="@{/user/add-contact}" class="btn bg-white btn-lg"><i style="margin: 5px;"
+				class="fas fa-pencil-alt"></i>Add New Contact</a>
+	  </div>
+</div>
+
+<script>
+     $(document).ready(()=>{
+	 $(".item").removeClass("active");
+	 $("#home-link").addClass("active");
+	
+});
+</script>
+</section>
+
+</body>
+</html>
